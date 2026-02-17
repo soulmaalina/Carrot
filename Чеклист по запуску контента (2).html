@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🥕 CARROT ШТАБ</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf6f0;
+  --orange:#ff6b1a;
+  --orange2:#e85a0a;
+  --orange-light:#fff0e6;
+  --orange-border:#ffd4b8;
+  --green:#b8e04a;
+  --green2:#9bc535;
+  --green-light:#f0f9d8;
+  --ink:#1a1208;
+  --card:#ffffff;
+  --border:#ede5d8;
+  --border2:#ddd0c0;
+  --muted:#8a7a65;
+  --soft:#c4b49a;
+  --red:#ff4444;
+  --red-light:#fff0f0;
+  --yellow:#ffbb00;
+  --yellow-light:#fffbe6;
+  --nav-w:240px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{background:var(--bg);color:var(--ink);font-family:'Nunito',sans-serif;font-size:14px;display:flex;height:100vh;overflow:hidden;cursor:default;}
+
+/* ── NAV ── */
+nav{
+  width:var(--nav-w);background:var(--orange);
+  display:flex;flex-direction:column;flex-shrink:0;
+  height:100vh;overflow-y:auto;position:relative;
+}
+
+/* diagonal stripe pattern */
+nav::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.04) 0px,rgba(255,255,255,0.04) 2px,transparent 2px,transparent 18px);
+  z-index:0;
+}
+
+.nav-inner{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;}
+
+.nav-brand{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.2);}
+.nav-logo{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.nav-carrot{font-size:28px;line-height:1;}
+.nav-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.04em;color:white;line-height:1;}
+.nav-sub{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.6);}
+
+.nav-date{padding:10px 20px 12px;font-size:11px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.04em;border-bottom:1px solid rgba(255,255,255,0.15);}
+
+.nav-section{padding:14px 20px 4px;font-size:9px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+
+.nav-item{
+  display:flex;align-items:center;gap:10px;padding:10px 20px;
+  cursor:pointer;transition:all 0.15s;border-left:3px solid transparent;
+  font-size:13px;font-weight:700;color:rgba(255,255,255,0.75);
+  text-transform:uppercase;letter-spacing:0.04em;
+}
+.nav-item:hover{background:rgba(255,255,255,0.12);color:white;border-left-color:rgba(255,255,255,0.4);}
+.nav-item.active{background:rgba(255,255,255,0.18);color:white;border-left-color:var(--green);}
+.nav-icon{font-size:16px;width:22px;text-align:center;}
+.nav-badge{margin-left:auto;background:var(--red);color:white;border-radius:100px;font-size:9px;font-weight:900;padding:2px 7px;letter-spacing:0.05em;}
+
+.nav-health{margin:12px 16px 0;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:16px;text-align:center;}
+.nh-emoji{font-size:28px;line-height:1;margin-bottom:4px;}
+.nh-score{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;color:white;transition:color 0.4s;}
+.nh-label{font-size:9px;font-weight:900;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:3px;}
+
+.nav-footer{margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.2);font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;}
+
+/* ── CONTENT ── */
+.content{flex:1;overflow-y:auto;height:100vh;background:var(--bg);}
+.page{display:none;padding:32px 36px 80px;max-width:920px;animation:fadeUp 0.3s ease both;}
+.page.active{display:block;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── PAGE HEADER ── */
+.page-header{margin-bottom:28px;padding-bottom:20px;border-bottom:3px solid var(--ink);}
+.page-header-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;}
+.page-eyebrow{font-size:10px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:0.02em;color:var(--ink);line-height:1;}
+.page-title span{color:var(--orange);}
+.page-sub{font-size:12px;font-weight:600;color:var(--muted);margin-top:4px;letter-spacing:0.02em;}
+
+/* ── SECTION ── */
+.sec{margin-bottom:32px;}
+.sec-label{font-size:9px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.sec-label::after{content:'';flex:1;height:2px;background:var(--border);}
+.sec-action{font-size:10px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);cursor:pointer;background:none;border:none;font-family:'Nunito',sans-serif;margin-left:auto;}
+.sec-action:hover{opacity:0.7;}
+
+/* ── ADD BTN ── */
+.add-btn{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);cursor:pointer;background:var(--orange-light);border:2px dashed var(--orange-border);border-radius:12px;padding:10px 16px;transition:all 0.15s;font-family:'Nunito',sans-serif;}
+.add-btn:hover{background:var(--orange);color:white;border-color:var(--orange);}
+
+/* ── PROJECT CARDS ── */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:12px;}
+
+.proj-card{
+  background:var(--card);border:2px solid var(--border);
+  border-radius:16px;padding:18px;position:relative;
+  border-top:4px solid var(--border);transition:border-color 0.2s,box-shadow 0.2s;
+}
+.proj-card:hover{box-shadow:4px 4px 0 var(--border2);}
+.proj-card.s-green{border-top-color:var(--green);}
+.proj-card.s-yellow{border-top-color:var(--yellow);}
+.proj-card.s-red{border-top-color:var(--red);}
+
+.proj-top{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.proj-emoji{font-size:18px;cursor:pointer;background:var(--bg);border:2px solid var(--border);border-radius:10px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;}
+.proj-emoji:hover{border-color:var(--orange);background:var(--orange-light);}
+.proj-name{flex:1;background:transparent;border:none;outline:none;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.03em;color:var(--ink);border-bottom:2px solid transparent;transition:border-color 0.15s;padding-bottom:1px;}
+.proj-name:focus{border-bottom-color:var(--orange);}
+
+.spill{font-size:10px;font-weight:900;padding:4px 10px;border-radius:100px;cursor:pointer;user-select:none;transition:all 0.15s;flex-shrink:0;letter-spacing:0.06em;text-transform:uppercase;}
+.spill:hover{opacity:0.75;}
+.spill.g{background:var(--green-light);color:var(--green2);border:2px solid var(--green);}
+.spill.y{background:var(--yellow-light);color:#b38600;border:2px solid var(--yellow);}
+.spill.r{background:var(--red-light);color:var(--red);border:2px solid var(--red);}
+
+.del-btn{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;background:transparent;border:2px solid var(--border);color:var(--soft);cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;opacity:0;font-weight:900;}
+.proj-card:hover .del-btn,.team-card:hover .del-btn,.dec-item:hover .del-btn{opacity:1;}
+.del-btn:hover{background:var(--red-light);color:var(--red);border-color:var(--red);}
+
+.proj-rows{display:flex;flex-direction:column;gap:8px;}
+.proj-row{display:flex;gap:8px;}
+.rl{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;color:var(--soft);width:72px;flex-shrink:0;padding-top:3px;}
+.rv{flex:1;background:transparent;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:12.5px;font-weight:600;color:var(--ink);resize:none;border-bottom:2px solid transparent;transition:border-color 0.15s;line-height:1.5;}
+.rv:focus{border-bottom-color:var(--orange-border);}
+.rv::placeholder{color:var(--soft);}
+
+/* ── TEAM ── */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;}
+.team-card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:16px;position:relative;}
+.team-card:hover{box-shadow:3px 3px 0 var(--border2);}
+.team-top{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:white;flex-shrink:0;cursor:pointer;border:2px solid rgba(0,0,0,0.1);}
+.av:hover{opacity:0.85;}
+.tm-name{background:transparent;border:none;outline:none;font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:0.04em;color:var(--ink);width:100%;border-bottom:2px solid transparent;transition:border-color 0.15s;}
+.tm-name:focus{border-bottom-color:var(--orange);}
+.tm-role{background:transparent;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;width:100%;margin-top:1px;}
+.lb-row{display:flex;justify-content:space-between;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:5px;}
+.lb-track{height:6px;background:var(--bg);border-radius:100px;overflow:hidden;margin-bottom:6px;border:1px solid var(--border);}
+.lb-fill{height:100%;border-radius:100px;transition:width 0.4s,background 0.4s;}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:var(--border);border-radius:100px;outline:none;margin-bottom:10px;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;cursor:pointer;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.2);}
+.tm-note{width:100%;background:transparent;border:none;border-top:2px solid var(--border);outline:none;font-family:'Nunito',sans-serif;font-size:11px;font-weight:600;color:var(--muted);font-style:italic;resize:none;padding-top:8px;line-height:1.4;}
+.tm-note::placeholder{color:var(--soft);}
+
+/* ── FINANCE ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px;}
+.stat-box{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:16px;text-align:center;transition:box-shadow 0.15s;}
+.stat-box:hover{box-shadow:3px 3px 0 var(--border2);}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:1;margin-bottom:4px;}
+.stat-num input{background:transparent;border:none;outline:none;font-family:'Bebas Neue',sans-serif;font-size:34px;width:80px;text-align:center;}
+.stat-label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);}
+.stat-hint{font-size:9px;font-weight:600;color:var(--soft);margin-top:2px;}
+
+.fin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.fin-card{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:18px;}
+.fin-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.04em;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.fin-rows{display:flex;flex-direction:column;gap:10px;}
+.fin-row{display:flex;justify-content:space-between;align-items:center;}
+.fin-lbl{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+.fin-inp{background:transparent;border:none;outline:none;font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--ink);width:80px;text-align:right;border-bottom:2px solid var(--border);transition:border-color 0.15s;}
+.fin-inp:focus{border-bottom-color:var(--orange);}
+.fin-divider{height:2px;background:var(--border);}
+.fin-profit-row{display:flex;justify-content:space-between;align-items:center;}
+.fin-profit-lbl{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+.fin-profit-val{font-family:'Bebas Neue',sans-serif;font-size:24px;}
+
+/* ── WEEKLY ── */
+.week-banner{background:var(--orange);border-radius:16px;padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;}
+.week-banner-left{}
+.week-banner-num{font-family:'Bebas Neue',sans-serif;font-size:56px;color:white;line-height:1;}
+.week-banner-label{font-size:10px;font-weight:900;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.7);}
+.week-banner-range{font-size:12px;font-weight:700;color:rgba(255,255,255,0.85);margin-top:3px;}
+.week-banner-right{text-align:right;}
+
+.focus-box{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:20px;}
+.focus-intro{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:14px;}
+.focus-item{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.focus-n{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--orange);width:20px;flex-shrink:0;line-height:1;}
+.focus-inp{flex:1;background:transparent;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:13.5px;font-weight:700;color:var(--ink);border-bottom:2px solid var(--border);padding-bottom:3px;transition:border-color 0.15s;}
+.focus-inp:focus{border-bottom-color:var(--orange);}
+.focus-inp::placeholder{color:var(--soft);}
+
+.dec-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.dec-item{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;position:relative;transition:box-shadow 0.15s;}
+.dec-item:hover{box-shadow:3px 3px 0 var(--border2);}
+.dec-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;cursor:pointer;background:var(--bg);}
+.dec-body{flex:1;}
+.dec-title{background:transparent;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--ink);width:100%;margin-bottom:3px;border-bottom:2px solid transparent;transition:border-color 0.15s;}
+.dec-title:focus{border-bottom-color:var(--border2);}
+.dec-sub{background:transparent;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:11.5px;font-weight:600;color:var(--muted);width:100%;}
+.dec-sub::placeholder{color:var(--soft);}
+.dec-tag{font-size:9px;font-weight:900;padding:3px 9px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;user-select:none;flex-shrink:0;}
+
+.wp-card{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;}
+.wp-header{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.wp-name{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:0.04em;}
+
+/* ── SAVE BAR ── */
+.save-bar{position:fixed;bottom:20px;right:24px;z-index:200;}
+.btn-save{background:var(--orange);color:white;border:none;border-radius:100px;padding:12px 24px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:3px 3px 0 var(--orange2);transition:all 0.15s;}
+.btn-save:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--orange2);}
+.btn-save:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--orange2);}
+
+.btn-plain{background:white;color:var(--muted);border:2px solid var(--border);border-radius:100px;padding:10px 18px;font-family:'Nunito',sans-serif;font-size:11px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:7px;box-shadow:2px 2px 0 var(--border2);transition:all 0.15s;}
+.btn-plain:hover{color:var(--ink);}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%) translateY(8px);background:var(--ink);color:white;border-radius:100px;padding:10px 20px;font-size:12px;font-weight:900;letter-spacing:0.08em;text-transform:uppercase;opacity:0;transition:all 0.3s;pointer-events:none;z-index:300;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* emoji picker */
+.epicker{position:absolute;background:white;border:2px solid var(--border);border-radius:14px;padding:10px;z-index:300;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;box-shadow:4px 4px 0 var(--border2);}
+.eopt{font-size:20px;padding:5px;border-radius:8px;cursor:pointer;text-align:center;}
+.eopt:hover{background:var(--orange-light);}
+
+@media(max-width:680px){nav{display:none;}.proj-grid,.fin-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:1fr 1fr;}.stats-row{grid-template-columns:1fr 1fr;}.page{padding:20px 16px 60px;}}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <div class="nav-carrot">🥕</div>
+      <div class="nav-name">CARROT</div>
+    </div>
+    <div class="nav-sub">Agency Штаб</div>
+  </div>
+  <div class="nav-date" id="navDate"></div>
+
+  <div class="nav-section">Операционка</div>
+  <div class="nav-item active" onclick="goTo('projects')" id="nav-projects">
+    <span class="nav-icon">🗂</span> Проекты
+    <span class="nav-badge" id="redBadge" style="display:none"></span>
+  </div>
+  <div class="nav-item" onclick="goTo('team')" id="nav-team">
+    <span class="nav-icon">👥</span> Команда
+  </div>
+
+  <div class="nav-section">Деньги</div>
+  <div class="nav-item" onclick="goTo('finance')" id="nav-finance">
+    <span class="nav-icon">📊</span> Рентабельность
+  </div>
+
+  <div class="nav-section">Планирование</div>
+  <div class="nav-item" onclick="goTo('weekly')" id="nav-weekly">
+    <span class="nav-icon">📋</span> Сводка недели
+  </div>
+
+  <div class="nav-health">
+    <div class="nh-emoji" id="nhEmoji">🥕</div>
+    <div class="nh-score" id="nhScore">—</div>
+    <div class="nh-label">Здоровье команды</div>
+  </div>
+
+  <div class="nav-footer">Carrot Agency © 2026</div>
+</div>
+</nav>
+
+<div class="content">
+
+  <!-- PROJECTS -->
+  <div class="page active" id="page-projects">
+    <div class="page-header">
+      <div class="page-eyebrow">Операционный обзор</div>
+      <div class="page-header-row">
+        <div>
+          <div class="page-title">ПРОЕКТЫ & <span>КЛИЕНТЫ</span></div>
+          <div class="page-sub">Клик по статусу — меняет светофор. Всё сохраняется автоматически.</div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-label">Активные проекты <button class="sec-action" onclick="addProject()">＋ ДОБАВИТЬ</button></div>
+      <div class="proj-grid" id="projGrid"></div>
+      <button class="add-btn" onclick="addProject()">＋ Новый проект</button>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="page" id="page-team">
+    <div class="page-header">
+      <div class="page-eyebrow">Управление командой</div>
+      <div class="page-title">КОМАНДА & <span>ЗАГРУЗКА</span></div>
+      <div class="page-sub">Ползунок загрузки: зелёный ок, жёлтый — следи, красный — поговори.</div>
+    </div>
+    <div class="sec">
+      <div class="sec-label">Состав <button class="sec-action" onclick="addMember()">＋ ДОБАВИТЬ</button></div>
+      <div class="team-grid" id="teamGrid"></div>
+      <button class="add-btn" onclick="addMember()">＋ Новый человек</button>
+    </div>
+    <div class="sec">
+      <div class="sec-label">Загрузка по людям</div>
+      <div id="loadSummary"></div>
+    </div>
+  </div>
+
+  <!-- FINANCE -->
+  <div class="page" id="page-finance">
+    <div class="page-header">
+      <div class="page-eyebrow">Финансовая операционка</div>
+      <div class="page-title">ЧАСЫ & <span>РЕНТАБЕЛЬНОСТЬ</span></div>
+      <div class="page-sub">Введи бюджет и потраченные часы — покажу сколько ₽ в час ты зарабатываешь.</div>
+    </div>
+    <div class="sec">
+      <div class="sec-label">Месяц в цифрах</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-num" style="color:var(--orange)"><input type="number" id="s-rev" value="0" min="0" oninput="calcFin();save()"></div>
+          <div class="stat-label">Выручка ₽</div><div class="stat-hint">все проекты</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" style="color:var(--red)"><input type="number" id="s-cost" value="0" min="0" oninput="calcFin();save()"></div>
+          <div class="stat-label">Расходы ₽</div><div class="stat-hint">зарплаты + инструменты</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="s-profit-d" style="color:var(--green2)">0</div>
+          <div class="stat-label">Прибыль ₽</div><div class="stat-hint">авто-расчёт</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="s-margin-d" style="color:var(--ink)">0%</div>
+          <div class="stat-label">Маржа</div><div class="stat-hint">от выручки</div>
+        </div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sec-label">По проектам</div>
+      <div class="fin-grid" id="finGrid"></div>
+    </div>
+  </div>
+
+  <!-- WEEKLY -->
+  <div class="page" id="page-weekly">
+    <div class="page-header">
+      <div class="page-eyebrow">Еженедельная сводка</div>
+      <div class="page-title">НЕДЕЛЯ <span id="wkTitleNum"></span></div>
+    </div>
+
+    <div class="week-banner">
+      <div class="week-banner-left">
+        <div class="week-banner-num" id="wkBigNum"></div>
+        <div class="week-banner-label">Текущая неделя</div>
+        <div class="week-banner-range" id="wkRange"></div>
+      </div>
+      <button class="btn-plain" onclick="newWeek()">🗓 Новая неделя</button>
+    </div>
+
+    <div class="sec">
+      <div class="sec-label">Фокус — три главных дела</div>
+      <div class="focus-box">
+        <div class="focus-intro">Что изменит картину к следующей неделе:</div>
+        <div class="focus-item"><div class="focus-n">1</div><input class="focus-inp" id="f1" placeholder="Главный приоритет..." oninput="save()"></div>
+        <div class="focus-item"><div class="focus-n">2</div><input class="focus-inp" id="f2" placeholder="Второй по важности..." oninput="save()"></div>
+        <div class="focus-item"><div class="focus-n">3</div><input class="focus-inp" id="f3" placeholder="Третий..." oninput="save()"></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-label">Решения до следующей недели <button class="sec-action" onclick="addDec()">＋ ДОБАВИТЬ</button></div>
+      <div class="dec-list" id="decList"></div>
+      <button class="add-btn" onclick="addDec()">＋ Добавить решение</button>
+    </div>
+
+    <div class="sec">
+      <div class="sec-label">Итоги по проектам</div>
+      <div id="wkProjects"></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="save-bar" style="display:flex;gap:8px;">
+  <button class="btn-save" onclick="saveManual()">💾 СОХРАНИТЬ</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const EMOJIS=['🥕','⚡','💼','✨','🎯','🔥','💡','🌿','🏆','📦','🚀','🎨','📱','💎','🐰','🌊'];
+const COLORS=['#ff6b1a','#6366f1','#ec4899','#14b8a6','#8b5cf6','#10b981','#f97316','#06b6d4','#f59e0b','#84cc16'];
+const SS=[{k:'green',cls:'s-green',sc:'g',lbl:'🟢 ОК'},{k:'yellow',cls:'s-yellow',sc:'y',lbl:'🟡 ВНИМАНИЕ'},{k:'red',cls:'s-red',sc:'r',lbl:'🔴 ГОРИТ'}];
+const DTAGS=[{cls:'r spill',lbl:'🔴 СРОЧНО'},{cls:'y spill',lbl:'🟡 НА МНЕ'},{cls:'g spill',lbl:'🟢 ПЛАНОВО'}];
+const DICONS=['🔥','⚡','📋','📌','🚨','💡','✅','⏰','🎯','🥕'];
+
+let S={
+  projects:[
+    {id:1,emoji:'🥕',name:'МОРКОВКА',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''},
+    {id:2,emoji:'⚡',name:'КЛИЕНТ 2',status:'yellow',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''},
+    {id:3,emoji:'💼',name:'КЛИЕНТ 3',status:'red',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''},
+    {id:4,emoji:'✨',name:'КЛИЕНТ 4',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''}
+  ],
+  team:[
+    {id:1,name:'НАСТЯ',role:'Контент-криейтор',color:'#ff6b1a',load:60,note:''},
+    {id:2,name:'МАША',role:'SMM менеджер',color:'#6366f1',load:45,note:''},
+    {id:3,name:'ТАНЯ',role:'Дизайнер',color:'#ec4899',load:70,note:''}
+  ],
+  decisions:[
+    {id:1,icon:'🔥',title:'',desc:'',ti:0},
+    {id:2,icon:'⚡',title:'',desc:'',ti:1},
+    {id:3,icon:'📋',title:'',desc:'',ti:2}
+  ],
+  finance:{rev:0,cost:0},
+  focus:['','',''],
+  nextId:20
+};
+
+function loadS(){try{const d=localStorage.getItem('carrot-shtab-v1');if(d)S=JSON.parse(d);}catch(e){}}
+function colSave(){
+  S.finance.rev=+(document.getElementById('s-rev')?.value||0);
+  S.finance.cost=+(document.getElementById('s-cost')?.value||0);
+  S.focus=[document.getElementById('f1')?.value||'',document.getElementById('f2')?.value||'',document.getElementById('f3')?.value||''];
+  S.projects.forEach(p=>{
+    ['done','missed','client'].forEach(f=>{const e=document.querySelector(`.proj-card[data-id="${p.id}"] .rv-${f}`);if(e)p[f]=e.value;});
+    const bv=document.querySelector(`.fin-card[data-id="${p.id}"] .fin-b`);
+    const hv=document.querySelector(`.fin-card[data-id="${p.id}"] .fin-h`);
+    if(bv)p.budget=+bv.value||0;if(hv)p.hours=+hv.value||0;
+    const wd=document.querySelector(`#wp-${p.id} .wp-done`);const wr=document.querySelector(`#wp-${p.id} .wp-risk`);
+    if(wd)p.wDone=wd.value;if(wr)p.wRisk=wr.value;
+  });
+  S.team.forEach(m=>{
+    const n=document.querySelector(`.team-card[data-id="${m.id}"] .tm-name`);
+    const r=document.querySelector(`.team-card[data-id="${m.id}"] .tm-role`);
+    const nt=document.querySelector(`.team-card[data-id="${m.id}"] .tm-note`);
+    if(n)m.name=n.value;if(r)m.role=r.value;if(nt)m.note=nt.value;
+  });
+  S.decisions.forEach(d=>{
+    const t=document.querySelector(`.dec-item[data-id="${d.id}"] .dec-title`);
+    const s=document.querySelector(`.dec-item[data-id="${d.id}"] .dec-sub`);
+    if(t)d.title=t.value;if(s)d.desc=s.value;
+  });
+}
+function save(){colSave();localStorage.setItem('carrot-shtab-v1',JSON.stringify(S));}
+function saveManual(){save();toast('✓ СОХРАНЕНО');}
+
+function goTo(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
+}
+
+function render(){rProj();rTeam();rFin();rWeekly();rLoadSum();updHealth();updMeta();}
+
+function rProj(){
+  const g=document.getElementById('projGrid');g.innerHTML='';
+  S.projects.forEach(p=>{
+    const s=SS.find(x=>x.k===p.status)||SS[0];
+    const d=document.createElement('div');
+    d.className=`proj-card ${s.cls}`;d.dataset.id=p.id;
+    d.innerHTML=`<button class="del-btn" onclick="delProj(${p.id})">✕</button>
+      <div class="proj-top">
+        <div class="proj-emoji" onclick="ePick(this,${p.id})">${p.emoji}</div>
+        <input class="proj-name" value="${esc(p.name)}" placeholder="НАЗВАНИЕ..." oninput="updP(${p.id},'name',this.value)">
+        <div class="spill ${s.sc}" onclick="cycleSt(${p.id})">${s.lbl}</div>
+      </div>
+      <div class="proj-rows">
+        <div class="proj-row"><div class="rl">Сделали</div><textarea class="rv rv-done" rows="2" placeholder="Что выполнили..." oninput="save()">${esc(p.done)}</textarea></div>
+        <div class="proj-row"><div class="rl">Не успели</div><textarea class="rv rv-missed" rows="1" placeholder="Что съехало..." oninput="save()">${esc(p.missed)}</textarea></div>
+        <div class="proj-row"><div class="rl">Клиент</div><textarea class="rv rv-client" rows="1" placeholder="Что ждёт..." oninput="save()">${esc(p.client)}</textarea></div>
+      </div>`;
+    g.appendChild(d);
+  });
+  const reds=S.projects.filter(p=>p.status==='red').length;
+  const b=document.getElementById('redBadge');
+  reds>0?(b.textContent=reds,b.style.display=''):(b.style.display='none');
+}
+
+function cycleSt(id){
+  const p=S.projects.find(x=>x.id===id);if(!p)return;
+  const i=SS.findIndex(s=>s.k===p.status);p.status=SS[(i+1)%3].k;
+  const card=document.querySelector(`.proj-card[data-id="${id}"]`);
+  if(card){
+    SS.forEach(s=>card.classList.remove(s.cls));
+    const ns=SS.find(s=>s.k===p.status);card.classList.add(ns.cls);
+    const pill=card.querySelector('.spill');
+    SS.forEach(s=>pill.classList.remove(s.sc));pill.classList.add(ns.sc);pill.textContent=ns.lbl;
+  }
+  updHealth();save();
+}
+function addProject(){S.projects.push({id:S.nextId++,emoji:EMOJIS[Math.floor(Math.random()*8)],name:'НОВЫЙ ПРОЕКТ',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''});save();render();}
+function delProj(id){S.projects=S.projects.filter(p=>p.id!==id);save();render();}
+function updP(id,f,v){const p=S.projects.find(x=>x.id===id);if(p){p[f]=v;if(f==='name')updMeta();}save();}
+
+function rTeam(){
+  const g=document.getElementById('teamGrid');g.innerHTML='';
+  S.team.forEach(m=>{
+    const lc=m.load>80?'var(--red)':m.load>60?'var(--yellow)':'var(--green2)';
+    const c=document.createElement('div');c.className='team-card';c.dataset.id=m.id;
+    c.innerHTML=`<button class="del-btn" onclick="delMember(${m.id})">✕</button>
+      <div class="team-top">
+        <div class="av" style="background:${m.color}" onclick="cycleColor(${m.id})">${(m.name||'?')[0]}</div>
+        <div style="flex:1;min-width:0">
+          <input class="tm-name" value="${esc(m.name)}" placeholder="ИМЯ" oninput="updM(${m.id},'name',this.value)">
+          <input class="tm-role" value="${esc(m.role)}" placeholder="Роль" oninput="updM(${m.id},'role',this.value)">
+        </div>
+      </div>
+      <div class="lb-row"><span>Загрузка</span><span id="lv-${m.id}" style="color:${lc}">${m.load}%</span></div>
+      <div class="lb-track"><div class="lb-fill" id="lf-${m.id}" style="width:${m.load}%;background:${lc}"></div></div>
+      <input type="range" min="0" max="100" value="${m.load}" oninput="updLoad(${m.id},this.value)" onchange="save()">
+      <textarea class="tm-note" rows="1" placeholder="Заметка..." oninput="updM(${m.id},'note',this.value)">${esc(m.note)}</textarea>`;
+    g.appendChild(c);
+    const sl=c.querySelector('input[type=range]');
+    const st=document.createElement('style');
+    st.textContent=`.team-card[data-id="${m.id}"] input[type=range]::-webkit-slider-thumb{background:${m.color};}.team-card[data-id="${m.id}"] input[type=range]::-moz-range-thumb{background:${m.color};border:2px solid white;border-radius:50%;width:14px;height:14px;}`;
+    document.head.appendChild(st);
+  });
+}
+
+function rLoadSum(){
+  const el=document.getElementById('loadSummary');if(!el)return;
+  if(!S.team.length){el.innerHTML='<div style="padding:16px;color:var(--soft);font-size:12px;font-weight:700">Добавь команду выше</div>';return;}
+  el.innerHTML=`<div style="background:var(--card);border:2px solid var(--border);border-radius:14px;overflow:hidden">${S.team.map((m,i)=>{
+    const lc=m.load>80?'var(--red)':m.load>60?'var(--yellow)':'var(--green2)';
+    return`<div style="padding:12px 18px;${i<S.team.length-1?'border-bottom:2px solid var(--border)':''}display:flex;align-items:center;gap:14px;">
+      <div class="av" style="background:${m.color};width:30px;height:30px;font-size:12px">${(m.name||'?')[0]}</div>
+      <div style="flex:1"><div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:0.04em">${esc(m.name)}</div><div style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em">${esc(m.role)}</div></div>
+      <div style="font-size:12px;font-weight:900;color:${lc}">${m.load}%</div>
+      <div style="width:90px;height:6px;background:var(--bg);border-radius:100px;overflow:hidden;border:1px solid var(--border)"><div style="width:${m.load}%;height:100%;background:${lc};border-radius:100px"></div></div>
+    </div>`;}).join('')}</div>`;
+}
+
+function addMember(){S.team.push({id:S.nextId++,name:'НОВЫЙ',role:'Роль',color:COLORS[S.team.length%COLORS.length],load:50,note:''});save();render();}
+function delMember(id){S.team=S.team.filter(m=>m.id!==id);save();render();}
+function updM(id,f,v){const m=S.team.find(x=>x.id===id);if(m){m[f]=v;if(f==='name')render();}save();}
+function updLoad(id,v){
+  const m=S.team.find(x=>x.id===id);if(!m)return;m.load=+v;
+  const lc=m.load>80?'var(--red)':m.load>60?'var(--yellow)':'var(--green2)';
+  const f=document.getElementById(`lf-${id}`);const l=document.getElementById(`lv-${id}`);
+  if(f){f.style.width=v+'%';f.style.background=lc;}if(l){l.textContent=v+'%';l.style.color=lc;}
+  save();
+}
+function cycleColor(id){const m=S.team.find(x=>x.id===id);if(!m)return;const i=COLORS.indexOf(m.color);m.color=COLORS[(i+1)%COLORS.length];save();rTeam();rLoadSum();}
+
+function rFin(){
+  document.getElementById('s-rev').value=S.finance.rev||0;
+  document.getElementById('s-cost').value=S.finance.cost||0;
+  calcFin();
+  const g=document.getElementById('finGrid');g.innerHTML='';
+  S.projects.forEach(p=>{
+    const rph=p.hours>0?Math.round(p.budget/p.hours):0;
+    const c=document.createElement('div');c.className='fin-card';c.dataset.id=p.id;
+    c.innerHTML=`<div class="fin-name">${p.emoji} ${esc(p.name)}</div>
+      <div class="fin-rows">
+        <div class="fin-row"><span class="fin-lbl">Бюджет ₽</span><input class="fin-inp fin-b" type="number" value="${p.budget||0}" min="0" oninput="updRph(${p.id});save()"></div>
+        <div class="fin-row"><span class="fin-lbl">Часов</span><input class="fin-inp fin-h" type="number" value="${p.hours||0}" min="0" oninput="updRph(${p.id});save()"></div>
+        <div class="fin-divider"></div>
+        <div class="fin-profit-row"><span class="fin-profit-lbl">₽ / час</span><span class="fin-profit-val" id="rph-${p.id}" style="color:${rph>2000?'var(--green2)':rph>1000?'var(--yellow)':'var(--muted)'}">${rph.toLocaleString()}</span></div>
+      </div>`;
+    g.appendChild(c);
+  });
+}
+function updRph(id){
+  const h=+(document.querySelector(`.fin-card[data-id="${id}"] .fin-h`)?.value||0);
+  const b=+(document.querySelector(`.fin-card[data-id="${id}"] .fin-b`)?.value||0);
+  const rph=h>0?Math.round(b/h):0;
+  const el=document.getElementById(`rph-${id}`);
+  if(el){el.textContent=rph.toLocaleString();el.style.color=rph>2000?'var(--green2)':rph>1000?'var(--yellow)':'var(--muted)';}
+}
+function calcFin(){
+  const rev=+(document.getElementById('s-rev')?.value||0);
+  const cost=+(document.getElementById('s-cost')?.value||0);
+  const pr=rev-cost;const mg=rev>0?Math.round(pr/rev*100):0;
+  const pe=document.getElementById('s-profit-d');const me=document.getElementById('s-margin-d');
+  if(pe){pe.textContent=pr.toLocaleString();pe.style.color=pr>0?'var(--green2)':'var(--red)';}
+  if(me){me.textContent=mg+'%';me.style.color=mg>30?'var(--green2)':mg>10?'var(--yellow)':'var(--red)';}
+}
+
+function rWeekly(){
+  const n=new Date();const wn=getWN(n);
+  document.getElementById('wkTitleNum').textContent=wn;
+  document.getElementById('wkBigNum').textContent=wn;
+  document.getElementById('wkRange').textContent=getWR();
+  document.getElementById('f1').value=S.focus[0]||'';
+  document.getElementById('f2').value=S.focus[1]||'';
+  document.getElementById('f3').value=S.focus[2]||'';
+  rDec();rWkProj();
+}
+function rDec(){
+  const list=document.getElementById('decList');list.innerHTML='';
+  S.decisions.forEach(d=>{
+    const t=DTAGS[d.ti]||DTAGS[0];
+    const item=document.createElement('div');item.className='dec-item';item.dataset.id=d.id;
+    item.innerHTML=`<button class="del-btn" onclick="delDec(${d.id})">✕</button>
+      <div class="dec-icon" onclick="cycleIcon(${d.id})">${d.icon}</div>
+      <div class="dec-body">
+        <input class="dec-title" value="${esc(d.title)}" placeholder="Что нужно решить..." oninput="save()">
+        <input class="dec-sub" value="${esc(d.desc)}" placeholder="Контекст, кто отвечает..." oninput="save()">
+      </div>
+      <div class="${t.cls} dec-tag" onclick="cycleDT(${d.id})">${t.lbl}</div>`;
+    list.appendChild(item);
+  });
+}
+function rWkProj(){
+  const el=document.getElementById('wkProjects');
+  el.innerHTML=S.projects.map(p=>`
+    <div class="wp-card" id="wp-${p.id}">
+      <div class="wp-header">
+        <span style="font-size:16px">${p.emoji}</span>
+        <span class="wp-name">${esc(p.name)}</span>
+        <div class="spill ${SS.find(s=>s.k===p.status)?.sc||'g'}" style="margin-left:auto;font-size:9px">${SS.find(s=>s.k===p.status)?.lbl||''}</div>
+      </div>
+      <div class="proj-row" style="margin-bottom:8px"><div class="rl">Итог</div><textarea class="rv wp-done" rows="1" placeholder="Что сделали за неделю..." oninput="save()">${esc(p.wDone||'')}</textarea></div>
+      <div class="proj-row"><div class="rl">Риски</div><textarea class="rv wp-risk" rows="1" placeholder="Что под угрозой..." oninput="save()">${esc(p.wRisk||'')}</textarea></div>
+    </div>`).join('');
+}
+function addDec(){S.decisions.push({id:S.nextId++,icon:DICONS[S.decisions.length%DICONS.length],title:'',desc:'',ti:1});save();rDec();}
+function delDec(id){S.decisions=S.decisions.filter(d=>d.id!==id);save();rDec();}
+function cycleIcon(id){const d=S.decisions.find(x=>x.id===id);if(!d)return;const i=DICONS.indexOf(d.icon);d.icon=DICONS[(i+1)%DICONS.length];save();rDec();}
+function cycleDT(id){const d=S.decisions.find(x=>x.id===id);if(!d)return;d.ti=(d.ti+1)%DTAGS.length;save();rDec();}
+function newWeek(){if(!confirm('Начать новую неделю? Данные сводки очистятся.'))return;S.projects.forEach(p=>{p.done='';p.missed='';p.client='';p.wDone='';p.wRisk='';});S.decisions.forEach(d=>{d.title='';d.desc='';});S.focus=['','',''];save();render();toast('🥕 НОВАЯ НЕДЕЛЯ!');}
+
+function updHealth(){
+  const scores={green:100,yellow:50,red:0};
+  if(!S.projects.length)return;
+  const avg=Math.round(S.projects.reduce((s,p)=>s+(scores[p.status]||0),0)/S.projects.length);
+  const el=document.getElementById('nhScore');const em=document.getElementById('nhEmoji');
+  el.textContent=avg+'%';
+  if(avg>=75){el.style.color='var(--green)';em.textContent='🥕';}
+  else if(avg>=40){el.style.color='var(--yellow)';em.textContent='⚠️';}
+  else{el.style.color='white';em.textContent='🔥';}
+}
+function updMeta(){document.getElementById('navDate').textContent=new Date().toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'}).toUpperCase();}
+
+function ePick(el,id){
+  document.querySelectorAll('.epicker').forEach(e=>e.remove());
+  const pk=document.createElement('div');pk.className='epicker';
+  EMOJIS.forEach(em=>{const o=document.createElement('div');o.className='eopt';o.textContent=em;o.onclick=()=>{const p=S.projects.find(x=>x.id===id);if(p){p.emoji=em;save();}el.textContent=em;pk.remove();rFin();rWkProj();};pk.appendChild(o);});
+  el.style.position='relative';el.appendChild(pk);
+  setTimeout(()=>document.addEventListener('click',function h(e){if(!pk.contains(e.target)){pk.remove();document.removeEventListener('click',h);}}),10);
+}
+
+function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function getWN(d){const s=new Date(d);s.setHours(0,0,0,0);s.setDate(s.getDate()+3-(s.getDay()+6)%7);const w=new Date(s.getFullYear(),0,4);return 1+Math.round(((s-w)/86400000-3+(w.getDay()+6)%7)/7);}
+function getWR(){const n=new Date();const s=new Date(n);s.setDate(n.getDate()-((n.getDay()+6)%7));const e=new Date(s);e.setDate(s.getDate()+6);const f=d=>d.toLocaleDateString('ru-RU',{day:'numeric',month:'long'});return f(s)+' — '+f(e);}
+
+loadS();render();
+document.addEventListener('input',()=>save());
+</script>
+</body>
+</html>
