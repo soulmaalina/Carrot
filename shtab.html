@@ -75,6 +75,53 @@ nav::before{
 
 .nav-footer{margin-top:auto;padding:16px 20px;border-top:1px solid rgba(255,255,255,0.2);font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;}
 
+/* ── HISTORY NAV ITEMS ── */
+.nav-hist-item{display:flex;align-items:center;gap:8px;padding:7px 20px;cursor:pointer;transition:all 0.15s;font-size:11px;font-weight:700;color:rgba(255,255,255,0.55);letter-spacing:0.03em;}
+.nav-hist-item:hover{background:rgba(255,255,255,0.1);color:white;}
+.nav-hist-item.active{background:rgba(255,255,255,0.15);color:white;}
+.nav-hist-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);flex-shrink:0;}
+
+/* ── HISTORY PAGE ── */
+.hist-empty{text-align:center;padding:60px 20px;color:var(--soft);}
+.hist-empty-icon{font-size:48px;margin-bottom:16px;}
+.hist-empty-text{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;}
+.hist-empty-sub{font-size:12px;margin-top:6px;font-weight:600;}
+
+.hist-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:16px;}
+.hist-card{background:var(--card);border:2px solid var(--border);border-radius:16px;padding:18px;cursor:pointer;transition:all 0.15s;position:relative;}
+.hist-card:hover{box-shadow:4px 4px 0 var(--border2);border-color:var(--orange);}
+.hist-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;}
+.hist-card-week{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--orange);line-height:1;}
+.hist-card-date{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:3px;}
+.hist-card-health{font-family:'Bebas Neue',sans-serif;font-size:24px;line-height:1;}
+.hist-projs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.hist-proj-tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:0.04em;}
+.hist-focus{font-size:11.5px;font-weight:600;color:var(--muted);line-height:1.5;border-top:2px solid var(--border);padding-top:10px;}
+.hist-focus-item{display:flex;gap:6px;margin-bottom:3px;}
+.hist-focus-num{font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--orange);flex-shrink:0;}
+.hist-del{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:transparent;border:2px solid var(--border);color:var(--soft);cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;opacity:0;font-weight:900;}
+.hist-card:hover .hist-del{opacity:1;}
+.hist-del:hover{background:var(--red-light);color:var(--red);border-color:var(--red);}
+
+/* detail modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:400;display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeUp 0.2s ease both;}
+.modal{background:var(--bg);border:2px solid var(--border);border-radius:20px;width:100%;max-width:680px;max-height:85vh;overflow-y:auto;box-shadow:6px 6px 0 var(--border2);}
+.modal-header{padding:24px 28px 16px;border-bottom:2px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:16px;position:sticky;top:0;background:var(--bg);z-index:1;}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:0.02em;line-height:1;}
+.modal-title span{color:var(--orange);}
+.modal-close{width:32px;height:32px;border-radius:50%;background:var(--border);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s;}
+.modal-close:hover{background:var(--red-light);color:var(--red);}
+.modal-body{padding:20px 28px 28px;}
+.modal-sec{margin-bottom:20px;}
+.modal-sec-label{font-size:9px;font-weight:900;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.modal-sec-label::after{content:'';flex:1;height:2px;background:var(--border);}
+.modal-proj-row{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:14px;margin-bottom:8px;}
+.modal-proj-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:0.04em;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.modal-field{display:flex;gap:8px;margin-bottom:5px;}
+.modal-field-label{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;color:var(--soft);width:68px;flex-shrink:0;padding-top:1px;}
+.modal-field-val{font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.5;flex:1;}
+.modal-field-val.empty{color:var(--soft);font-style:italic;}
+
 /* ── CONTENT ── */
 .content{flex:1;overflow-y:auto;height:100vh;background:var(--bg);}
 .page{display:none;padding:32px 36px 80px;max-width:920px;animation:fadeUp 0.3s ease both;}
@@ -261,6 +308,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <span class="nav-icon">📋</span> Сводка недели
   </div>
 
+  <div class="nav-section">История</div>
+  <div class="nav-item" onclick="goTo('history')" id="nav-history">
+    <span class="nav-icon">🗄</span> Архив недель
+    <span class="nav-badge" id="histBadge" style="display:none"></span>
+  </div>
+  <div id="navHistList"></div>
+
   <div class="nav-health">
     <div class="nh-emoji" id="nhEmoji">🥕</div>
     <div class="nh-score" id="nhScore">—</div>
@@ -381,7 +435,22 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     </div>
   </div>
 
+  <!-- HISTORY -->
+  <div class="page" id="page-history">
+    <div class="page-header">
+      <div class="page-eyebrow">Архив</div>
+      <div class="page-title">ИСТОРИЯ <span>НЕДЕЛЬ</span></div>
+      <div class="page-sub">Все прошлые сводки сохраняются автоматически когда нажимаешь "Новая неделя"</div>
+    </div>
+    <div class="sec">
+      <div class="sec-label">Прошлые недели</div>
+      <div id="histGrid"></div>
+    </div>
+  </div>
+
 </div>
+
+<div id="modalContainer"></div>
 
 <div class="save-bar" style="display:flex;gap:8px;">
   <button class="btn-save" onclick="saveManual()">💾 СОХРАНИТЬ</button>
@@ -417,7 +486,7 @@ let S={
   nextId:20
 };
 
-function loadS(){try{const d=localStorage.getItem('carrot-shtab-v1');if(d)S=JSON.parse(d);}catch(e){}}
+function loadS(){try{const d=localStorage.getItem('carrot-shtab-v1');if(d){S=JSON.parse(d);if(!S.history)S.history=[];}}catch(e){}}
 function colSave(){
   S.finance.rev=+(document.getElementById('s-rev')?.value||0);
   S.finance.cost=+(document.getElementById('s-cost')?.value||0);
@@ -452,7 +521,7 @@ function goTo(id){
   document.getElementById('nav-'+id).classList.add('active');
 }
 
-function render(){rProj();rTeam();rFin();rWeekly();rLoadSum();updHealth();updMeta();}
+function render(){rProj();rTeam();rFin();rWeekly();rLoadSum();rHistory();updHealth();updMeta();}
 
 function rProj(){
   const g=document.getElementById('projGrid');g.innerHTML='';
@@ -620,7 +689,148 @@ function addDec(){S.decisions.push({id:S.nextId++,icon:DICONS[S.decisions.length
 function delDec(id){S.decisions=S.decisions.filter(d=>d.id!==id);save();rDec();}
 function cycleIcon(id){const d=S.decisions.find(x=>x.id===id);if(!d)return;const i=DICONS.indexOf(d.icon);d.icon=DICONS[(i+1)%DICONS.length];save();rDec();}
 function cycleDT(id){const d=S.decisions.find(x=>x.id===id);if(!d)return;d.ti=(d.ti+1)%DTAGS.length;save();rDec();}
-function newWeek(){if(!confirm('Начать новую неделю? Данные сводки очистятся.'))return;S.projects.forEach(p=>{p.done='';p.missed='';p.client='';p.wDone='';p.wRisk='';});S.decisions.forEach(d=>{d.title='';d.desc='';});S.focus=['','',''];save();render();toast('🥕 НОВАЯ НЕДЕЛЯ!');}
+function newWeek(){
+  if(!confirm('Начать новую неделю? Текущая сводка сохранится в историю.'))return;
+  colSave();
+  // archive current week
+  const snap={
+    id: Date.now(),
+    weekNum: getWN(new Date()),
+    weekRange: getWR(),
+    savedAt: new Date().toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'}),
+    health: calcHealthScore(),
+    focus: [...S.focus],
+    projects: S.projects.map(p=>({
+      id:p.id, emoji:p.emoji, name:p.name, status:p.status,
+      done:p.done, missed:p.missed, client:p.client,
+      wDone:p.wDone||'', wRisk:p.wRisk||''
+    })),
+    decisions: S.decisions.map(d=>({...d}))
+  };
+  if(!S.history) S.history=[];
+  S.history.unshift(snap);
+  // clear current week fields
+  S.projects.forEach(p=>{p.done='';p.missed='';p.client='';p.wDone='';p.wRisk='';});
+  S.decisions.forEach(d=>{d.title='';d.desc='';});
+  S.focus=['','',''];
+  save();render();toast('🥕 НЕДЕЛЯ СОХРАНЕНА В ИСТОРИЮ!');
+}
+
+function calcHealthScore(){
+  const scores={green:100,yellow:50,red:0};
+  if(!S.projects.length)return 0;
+  return Math.round(S.projects.reduce((s,p)=>s+(scores[p.status]||0),0)/S.projects.length);
+}
+
+function rHistory(){
+  if(!S.history) S.history=[];
+  // nav list
+  const navList=document.getElementById('navHistList');
+  navList.innerHTML=S.history.slice(0,5).map(h=>`
+    <div class="nav-hist-item" onclick="goTo('history')">
+      <div class="nav-hist-dot"></div>
+      Неделя ${h.weekNum} · ${h.savedAt.split(' ').slice(0,2).join(' ')}
+    </div>`).join('');
+  // badge
+  const b=document.getElementById('histBadge');
+  if(S.history.length>0){b.textContent=S.history.length;b.style.display='';}else{b.style.display='none';}
+  // grid
+  const grid=document.getElementById('histGrid');
+  if(!grid)return;
+  if(!S.history.length){
+    grid.innerHTML=`<div class="hist-empty"><div class="hist-empty-icon">📭</div><div class="hist-empty-text">История пуста</div><div class="hist-empty-sub">Нажми "Новая неделя" в сводке — текущая неделя сохранится сюда</div></div>`;
+    return;
+  }
+  grid.innerHTML='';
+  S.history.forEach(h=>{
+    const hc=h.health>=75?'var(--green2)':h.health>=40?'var(--yellow)':'var(--red)';
+    const card=document.createElement('div');
+    card.className='hist-card';
+    const focusItems=h.focus.filter(f=>f).slice(0,2);
+    card.innerHTML=`
+      <button class="hist-del" onclick="event.stopPropagation();delHistWeek(${h.id})">✕</button>
+      <div class="hist-card-top">
+        <div>
+          <div class="hist-card-week">НЕДЕЛЯ ${h.weekNum}</div>
+          <div class="hist-card-date">${h.weekRange}</div>
+          <div class="hist-card-date" style="margin-top:2px;color:var(--soft)">сохранено ${h.savedAt}</div>
+        </div>
+        <div style="text-align:right">
+          <div class="hist-card-health" style="color:${hc}">${h.health}%</div>
+          <div style="font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em">здоровье</div>
+        </div>
+      </div>
+      <div class="hist-projs">
+        ${h.projects.map(p=>{
+          const sc=p.status==='green'?'g':p.status==='yellow'?'y':'r';
+          return`<div class="hist-proj-tag spill ${sc}">${p.emoji} ${p.name}</div>`;
+        }).join('')}
+      </div>
+      ${focusItems.length?`<div class="hist-focus">${focusItems.map((f,i)=>`<div class="hist-focus-item"><div class="hist-focus-num">${i+1}</div><div>${f}</div></div>`).join('')}</div>`:''}
+    `;
+    card.onclick=(e)=>{if(!e.target.classList.contains('hist-del'))openHistModal(h);};
+    grid.appendChild(card);
+  });
+}
+
+function delHistWeek(id){
+  if(!confirm('Удалить эту неделю из истории?'))return;
+  S.history=S.history.filter(h=>h.id!==id);
+  save();rHistory();
+}
+
+function openHistModal(h){
+  const hc=h.health>=75?'var(--green2)':h.health>=40?'var(--yellow)':'var(--red)';
+  const mc=document.getElementById('modalContainer');
+  mc.innerHTML=`
+    <div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <div class="modal-header">
+          <div>
+            <div class="modal-title">НЕДЕЛЯ <span>${h.weekNum}</span></div>
+            <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px">${h.weekRange} · здоровье <span style="color:${hc}">${h.health}%</span></div>
+          </div>
+          <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          ${h.focus.some(f=>f)?`
+          <div class="modal-sec">
+            <div class="modal-sec-label">Фокус недели</div>
+            ${h.focus.filter(f=>f).map((f,i)=>`<div class="hist-focus-item" style="margin-bottom:6px"><div class="hist-focus-num">${i+1}</div><div style="font-size:13px;font-weight:700">${f}</div></div>`).join('')}
+          </div>`:''}
+          <div class="modal-sec">
+            <div class="modal-sec-label">Проекты</div>
+            ${h.projects.map(p=>{
+              const sc=p.status==='green'?'g':p.status==='yellow'?'y':'r';
+              return`<div class="modal-proj-row">
+                <div class="modal-proj-name">
+                  ${p.emoji}
+                  <span>${p.name}</span>
+                  <div class="spill ${sc}" style="font-size:9px;margin-left:auto">${p.status==='green'?'🟢 ОК':p.status==='yellow'?'🟡 ВНИМАНИЕ':'🔴 ГОРИТ'}</div>
+                </div>
+                ${p.done?`<div class="modal-field"><div class="modal-field-label">Сделали</div><div class="modal-field-val">${p.done}</div></div>`:''}
+                ${p.missed?`<div class="modal-field"><div class="modal-field-label">Не успели</div><div class="modal-field-val">${p.missed}</div></div>`:''}
+                ${p.client?`<div class="modal-field"><div class="modal-field-label">Клиент</div><div class="modal-field-val">${p.client}</div></div>`:''}
+                ${p.wDone?`<div class="modal-field"><div class="modal-field-label">Итог</div><div class="modal-field-val">${p.wDone}</div></div>`:''}
+                ${p.wRisk?`<div class="modal-field"><div class="modal-field-label">Риски</div><div class="modal-field-val" style="color:var(--red)">${p.wRisk}</div></div>`:''}
+              </div>`;}).join('')}
+          </div>
+          ${h.decisions.some(d=>d.title)?`
+          <div class="modal-sec">
+            <div class="modal-sec-label">Решения</div>
+            ${h.decisions.filter(d=>d.title).map(d=>`
+              <div style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)">
+                <span style="font-size:16px">${d.icon}</span>
+                <div><div style="font-size:13px;font-weight:700">${d.title}</div>${d.desc?`<div style="font-size:11.5px;font-weight:600;color:var(--muted);margin-top:2px">${d.desc}</div>`:''}</div>
+              </div>`).join('')}
+          </div>`:''}
+        </div>
+      </div>
+    </div>`;
+}
+
+function closeModal(){document.getElementById('modalContainer').innerHTML='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 function updHealth(){
   const scores={green:100,yellow:50,red:0};
