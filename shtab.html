@@ -561,7 +561,11 @@ function cycleSt(id){
 }
 function addProject(){S.projects.push({id:S.nextId++,emoji:EMOJIS[Math.floor(Math.random()*8)],name:'НОВЫЙ ПРОЕКТ',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''});save();render();}
 function delProj(id){S.projects=S.projects.filter(p=>p.id!==id);save();render();}
-function updP(id,f,v){const p=S.projects.find(x=>x.id===id);if(p){p[f]=v;if(f==='name')updMeta();}save();}
+function updP(id,f,v){
+  const p=S.projects.find(x=>x.id===id);if(!p)return;
+  p[f]=v;
+  save();
+}
 
 function rTeam(){
   const g=document.getElementById('teamGrid');g.innerHTML='';
@@ -603,7 +607,16 @@ function rLoadSum(){
 
 function addMember(){S.team.push({id:S.nextId++,name:'НОВЫЙ',role:'Роль',color:COLORS[S.team.length%COLORS.length],load:50,note:''});save();render();}
 function delMember(id){S.team=S.team.filter(m=>m.id!==id);save();render();}
-function updM(id,f,v){const m=S.team.find(x=>x.id===id);if(m){m[f]=v;if(f==='name')render();}save();}
+function updM(id,f,v){
+  const m=S.team.find(x=>x.id===id);if(!m)return;
+  m[f]=v;
+  if(f==='name'){
+    const av=document.querySelector(`.team-card[data-id="${id}"] .av`);
+    if(av)av.textContent=(v||'?')[0].toUpperCase();
+    rLoadSum();
+  }
+  save();
+}
 function updLoad(id,v){
   const m=S.team.find(x=>x.id===id);if(!m)return;m.load=+v;
   const lc=m.load>80?'var(--red)':m.load>60?'var(--yellow)':'var(--green2)';
