@@ -68,6 +68,28 @@ nav::before{
 .nav-icon{font-size:16px;width:22px;text-align:center;}
 .nav-badge{margin-left:auto;background:var(--red);color:white;border-radius:100px;font-size:9px;font-weight:900;padding:2px 7px;letter-spacing:0.05em;}
 
+/* ── PULSE PANEL ── */
+.nav-pulse{margin:14px 16px 0;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:14px;}
+.np-title{font-size:9px;font-weight:900;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:10px;}
+.np-block{margin-bottom:12px;}
+.np-block:last-child{margin-bottom:0;}
+.np-label{font-size:9px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:5px;}
+.np-traffic{display:flex;gap:8px;margin-bottom:5px;}
+.nt-item{display:flex;align-items:center;gap:4px;}
+.nt-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.nt-num{font-family:'Bebas Neue',sans-serif;font-size:18px;color:white;line-height:1;}
+.np-bar-wrap{display:flex;height:5px;border-radius:100px;overflow:hidden;gap:1px;}
+.np-bar-seg{height:100%;transition:flex 0.4s ease;}
+.np-big{font-family:'Bebas Neue',sans-serif;font-size:32px;color:white;line-height:1;}
+.np-big.has-risks{color:#ff8080;}
+.np-moods{display:flex;gap:10px;}
+.nm-item{font-size:12px;color:rgba(255,255,255,0.85);font-weight:700;display:flex;align-items:center;gap:3px;}
+.nm-item span{font-family:'Bebas Neue',sans-serif;font-size:16px;color:white;}
+.np-call{font-size:12px;font-weight:800;color:white;line-height:1.4;}
+.np-call.urgent{color:#ff8080;}
+.np-call.soon{color:#ffd96e;}
+.np-divider{height:1px;background:rgba(255,255,255,0.1);margin:10px 0;}
+
 .nav-health{margin:12px 16px 0;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:16px;text-align:center;}
 .nh-emoji{font-size:28px;line-height:1;margin-bottom:4px;}
 .nh-score{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;color:white;transition:color 0.4s;}
@@ -273,6 +295,59 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .eopt{font-size:20px;padding:5px;border-radius:8px;cursor:pointer;text-align:center;}
 .eopt:hover{background:var(--orange-light);}
 
+/* ── PROJECT CARD EXTRAS ── */
+.proj-meta-row{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.proj-stage{font-size:10px;font-weight:900;padding:4px 10px;border-radius:100px;letter-spacing:0.06em;text-transform:uppercase;border:2px solid;cursor:pointer;user-select:none;transition:all 0.15s;flex-shrink:0;}
+.proj-stage:hover{opacity:0.75;}
+.ps-onboard{background:#e0f2fe;color:#0369a1;border-color:#7dd3fc;}
+.ps-active{background:var(--green-light);color:var(--green2);border-color:var(--green);}
+.ps-final{background:var(--yellow-light);color:#b38600;border-color:var(--yellow);}
+.ps-pause{background:var(--border);color:var(--muted);border-color:var(--border2);}
+
+.proj-call-field{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:6px 10px;background:var(--orange-light);border:2px solid var(--orange-border);border-radius:10px;}
+.call-field-label{font-size:10px;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap;}
+.call-field-date{font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;color:var(--ink);background:white;border:2px solid var(--orange-border);border-radius:6px;padding:2px 6px;outline:none;cursor:pointer;}
+.call-field-date:focus{border-color:var(--orange);}
+.call-field-date::-webkit-calendar-picker-indicator{opacity:0.5;cursor:pointer;}
+.call-countdown{font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--orange);margin-left:auto;}
+.call-soon-txt{color:var(--red)!important;}
+
+/* client mood */
+.mood-row{display:flex;align-items:center;gap:6px;margin-top:2px;}
+.mood-label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--soft);}
+.mood-btn{font-size:16px;cursor:pointer;opacity:0.35;transition:all 0.15s;border:none;background:none;padding:1px 3px;border-radius:6px;}
+.mood-btn:hover{opacity:0.8;transform:scale(1.2);}
+.mood-btn.active{opacity:1;transform:scale(1.15);background:var(--bg);box-shadow:0 0 0 2px var(--border);}
+
+/* divider in card */
+.proj-divider{height:2px;background:var(--border);margin:10px 0;border-radius:2px;}
+
+/* next step row */
+.proj-nextstep{display:flex;gap:8px;align-items:flex-start;background:var(--orange-light);border:2px solid var(--orange-border);border-radius:10px;padding:8px 10px;margin-top:8px;}
+.ns-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+.ns-inp{flex:1;background:transparent;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--ink);resize:none;line-height:1.4;}
+.ns-inp::placeholder{color:var(--orange);opacity:0.6;}
+
+/* risk row */
+.proj-risk{display:flex;gap:8px;align-items:flex-start;background:var(--red-light);border:2px solid #ffc5c5;border-radius:10px;padding:8px 10px;margin-top:6px;}
+.proj-risk.empty-risk{background:transparent;border-color:var(--border);}
+.risk-inp{flex:1;background:transparent;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--red);resize:none;line-height:1.4;}
+.proj-risk.empty-risk .risk-inp{color:var(--ink);}
+.risk-inp::placeholder{color:var(--soft);}
+
+/* urgent client block */
+.proj-urgent-client{display:flex;gap:8px;align-items:flex-start;background:#fff7e0;border:2px solid #ffd966;border-radius:10px;padding:8px 10px;margin-top:6px;position:relative;}
+.urgent-inp{flex:1;background:transparent;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:#7a5a00;resize:none;line-height:1.4;}
+.urgent-inp::placeholder{color:#b8960a;opacity:0.7;}
+.urgent-close{position:absolute;top:6px;right:6px;width:18px;height:18px;border-radius:50%;background:rgba(0,0,0,0.08);border:none;cursor:pointer;font-size:9px;display:flex;align-items:center;justify-content:center;color:#7a5a00;font-weight:900;transition:background 0.15s;}
+.urgent-close:hover{background:rgba(0,0,0,0.18);}
+
+/* footer row */
+.proj-footer-row{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+.add-urgent-btn{font-size:10px;font-weight:800;color:var(--muted);background:none;border:2px solid var(--border);border-radius:100px;padding:3px 9px;cursor:pointer;letter-spacing:0.04em;transition:all 0.15s;font-family:'Nunito',sans-serif;}
+.add-urgent-btn:hover{border-color:#ffd966;color:#7a5a00;background:#fff7e0;}
+.add-urgent-btn.hidden{display:none;}
+
 @media(max-width:680px){nav{display:none;}.proj-grid,.fin-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:1fr 1fr;}.stats-row{grid-template-columns:1fr 1fr;}.page{padding:20px 16px 60px;}}
 </style>
 </head>
@@ -314,6 +389,43 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
     <span class="nav-badge" id="histBadge" style="display:none"></span>
   </div>
   <div id="navHistList"></div>
+
+  <div class="nav-pulse" id="navPulse">
+    <div class="np-title">ПУЛЬС</div>
+
+    <!-- 1. Светофор проектов -->
+    <div class="np-block">
+      <div class="np-label">Проекты</div>
+      <div class="np-traffic" id="npTraffic">
+        <div class="nt-item"><span class="nt-dot" style="background:var(--green)"></span><span class="nt-num" id="ntGreen">0</span></div>
+        <div class="nt-item"><span class="nt-dot" style="background:var(--yellow)"></span><span class="nt-num" id="ntYellow">0</span></div>
+        <div class="nt-item"><span class="nt-dot" style="background:var(--red)"></span><span class="nt-num" id="ntRed">0</span></div>
+      </div>
+      <div class="np-bar-wrap"><div class="np-bar-seg" id="nbGreen" style="background:var(--green)"></div><div class="np-bar-seg" id="nbYellow" style="background:var(--yellow)"></div><div class="np-bar-seg" id="nbRed" style="background:var(--red)"></div></div>
+    </div>
+
+    <!-- 2. Риски -->
+    <div class="np-block">
+      <div class="np-label">Открытых рисков</div>
+      <div class="np-big" id="npRisks">—</div>
+    </div>
+
+    <!-- 3. Настроение клиентов -->
+    <div class="np-block">
+      <div class="np-label">Клиенты</div>
+      <div class="np-moods" id="npMoods">
+        <div class="nm-item">😊 <span id="nmHappy">0</span></div>
+        <div class="nm-item">😐 <span id="nmNeutral">0</span></div>
+        <div class="nm-item">😬 <span id="nmTense">0</span></div>
+      </div>
+    </div>
+
+    <!-- 4. Ближайший звонок -->
+    <div class="np-block" id="npCallBlock">
+      <div class="np-label">Ближайший звонок</div>
+      <div class="np-call" id="npCall">—</div>
+    </div>
+  </div>
 
   <div class="nav-health">
     <div class="nh-emoji" id="nhEmoji">🥕</div>
@@ -466,10 +578,10 @@ const DICONS=['🔥','⚡','📋','📌','🚨','💡','✅','⏰','🎯','🥕'
 
 let S={
   projects:[
-    {id:1,emoji:'🥕',name:'МОРКОВКА',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''},
-    {id:2,emoji:'⚡',name:'КЛИЕНТ 2',status:'yellow',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''},
-    {id:3,emoji:'💼',name:'КЛИЕНТ 3',status:'red',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''},
-    {id:4,emoji:'✨',name:'КЛИЕНТ 4',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''}
+    {id:1,emoji:'🥕',name:'МОРКОВКА',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:'',stage:'active',nextCall:'',mood:'',nextStep:'',risk:''},
+    {id:2,emoji:'⚡',name:'КЛИЕНТ 2',status:'yellow',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:'',stage:'active',nextCall:'',mood:'',nextStep:'',risk:''},
+    {id:3,emoji:'💼',name:'КЛИЕНТ 3',status:'red',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:'',stage:'final',nextCall:'',mood:'',nextStep:'',risk:''},
+    {id:4,emoji:'✨',name:'КЛИЕНТ 4',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:'',stage:'onboard',nextCall:'',mood:'',nextStep:'',risk:''}
   ],
   team:[
     {id:1,name:'НАСТЯ',role:'Контент-криейтор',color:'#ff6b1a',load:60,note:''},
@@ -492,8 +604,11 @@ function colSave(){
   S.finance.cost=+(document.getElementById('s-cost')?.value||0);
   S.focus=[document.getElementById('f1')?.value||'',document.getElementById('f2')?.value||'',document.getElementById('f3')?.value||''];
   S.projects.forEach(p=>{
-    ['done','missed','client'].forEach(f=>{const e=document.querySelector(`.proj-card[data-id="${p.id}"] .rv-${f}`);if(e)p[f]=e.value;});
-    const bv=document.querySelector(`.fin-card[data-id="${p.id}"] .fin-b`);
+    ['done','missed'].forEach(f=>{const e=document.querySelector(`.proj-card[data-id="${p.id}"] .rv-${f}`);if(e)p[f]=e.value;});
+    const uc=document.querySelector(`#uc-${p.id} .urgent-inp`);if(uc)p.client=uc.value;
+    const ns=document.querySelector(`.proj-card[data-id="${p.id}"] .rv-nextstep`);if(ns)p.nextStep=ns.value;
+    const rk=document.querySelector(`.proj-card[data-id="${p.id}"] .rv-risk`);if(rk)p.risk=rk.value;
+    const nc=document.querySelector(`.proj-card[data-id="${p.id}"] .rv-nextcall`);if(nc)p.nextCall=nc.value;
     const hv=document.querySelector(`.fin-card[data-id="${p.id}"] .fin-h`);
     if(bv)p.budget=+bv.value||0;if(hv)p.hours=+hv.value||0;
     const wd=document.querySelector(`#wp-${p.id} .wp-done`);const wr=document.querySelector(`#wp-${p.id} .wp-risk`);
@@ -521,30 +636,136 @@ function goTo(id){
   document.getElementById('nav-'+id).classList.add('active');
 }
 
-function render(){rProj();rTeam();rFin();rWeekly();rLoadSum();rHistory();updHealth();updMeta();}
+function render(){rProj();rTeam();rFin();rWeekly();rLoadSum();rHistory();updHealth();updMeta();updPulse();}
 
+const STAGES=[
+  {k:'onboard',lbl:'🌱 Онбординг',cls:'ps-onboard'},
+  {k:'active', lbl:'🔥 В работе', cls:'ps-active'},
+  {k:'final',  lbl:'🏁 Финальный',cls:'ps-final'},
+  {k:'pause',  lbl:'⏸ Пауза',    cls:'ps-pause'},
+];
+const MOODS=[
+  {k:'happy', e:'😊'},
+  {k:'neutral',e:'😐'},
+  {k:'tense', e:'😬'},
+];
+function stageNext(id){
+  const p=S.projects.find(x=>x.id===id);if(!p)return;
+  p.stage=p.stage||'active';
+  const i=STAGES.findIndex(s=>s.k===p.stage);p.stage=STAGES[(i+1)%STAGES.length].k;save();
+  const card=document.querySelector(`.proj-card[data-id="${id}"]`);
+  if(card){const sb=card.querySelector('.proj-stage');const st=STAGES.find(s=>s.k===p.stage);STAGES.forEach(s=>sb.classList.remove(s.cls));sb.classList.add(st.cls);sb.textContent=st.lbl;}
+}
+function setMood(id,mk){
+  const p=S.projects.find(x=>x.id===id);if(!p)return;
+  p.mood=mk;save();
+  const card=document.querySelector(`.proj-card[data-id="${id}"]`);
+  if(card){card.querySelectorAll('.mood-btn').forEach(b=>{b.classList.toggle('active',b.dataset.mood===mk);});}
+}
+function callBadgeHTML(p){
+  const v=p.nextCall||'';
+  // compute countdown label
+  let countLabel='';
+  if(v){
+    const d=new Date(v);const now=new Date();now.setHours(0,0,0,0);d.setHours(0,0,0,0);
+    const days=Math.round((d-now)/(1000*60*60*24));
+    const soon=days<=2;
+    const label=days<0?`${Math.abs(days)}д назад`:days===0?'сегодня':days===1?'завтра':`через ${days}д`;
+    countLabel=`<span class="call-countdown${soon?' call-soon-txt':''}">${label}</span>`;
+  }
+  return`<div class="proj-call-field">
+    <span class="call-field-label">📅 Следующий звонок</span>
+    <input type="date" class="call-field-date rv-nextcall" value="${v}" oninput="updP(${p.id},'nextCall',this.value);updateCallLabel(this)">
+    ${countLabel}
+  </div>`;
+}
+function updateCallLabel(inp){
+  const wrap=inp.closest('.proj-call-field');
+  let old=wrap.querySelector('.call-countdown');if(old)old.remove();
+  const v=inp.value;if(!v)return;
+  const d=new Date(v);const now=new Date();now.setHours(0,0,0,0);d.setHours(0,0,0,0);
+  const days=Math.round((d-now)/(1000*60*60*24));
+  const soon=days<=2;
+  const label=days<0?`${Math.abs(days)}д назад`:days===0?'сегодня':days===1?'завтра':`через ${days}д`;
+  const span=document.createElement('span');span.className='call-countdown'+(soon?' call-soon-txt':'');span.textContent=label;
+  wrap.appendChild(span);
+}
 function rProj(){
   const g=document.getElementById('projGrid');g.innerHTML='';
   S.projects.forEach(p=>{
+    if(!p.stage)p.stage='active';
+    if(!p.mood)p.mood='';
+    if(!p.nextStep)p.nextStep='';
+    if(!p.risk)p.risk='';
+    if(!p.client)p.client='';
     const s=SS.find(x=>x.k===p.status)||SS[0];
+    const st=STAGES.find(x=>x.k===p.stage)||STAGES[1];
     const d=document.createElement('div');
     d.className=`proj-card ${s.cls}`;d.dataset.id=p.id;
+    const moodBtns=MOODS.map(m=>`<button class="mood-btn${p.mood===m.k?' active':''}" data-mood="${m.k}" onclick="setMood(${p.id},'${m.k}')">${m.e}</button>`).join('');
+    const hasRisk=p.risk&&p.risk.trim().length>0;
+    const hasClient=p.client&&p.client.trim().length>0;
+    // urgent client block — only shown when filled
+    const urgentClientHTML=hasClient
+      ?`<div class="proj-urgent-client" id="uc-${p.id}"><div class="ns-icon">🔔</div><textarea class="urgent-inp rv-client" rows="1" oninput="save();toggleUrgentVis(${p.id},this.value)">${esc(p.client)}</textarea><button class="urgent-close" onclick="clearUrgent(${p.id})" title="Убрать">✕</button></div>`
+      :`<div class="proj-urgent-client" id="uc-${p.id}" style="display:none"><div class="ns-icon">🔔</div><textarea class="urgent-inp rv-client" rows="1" placeholder="Клиент ждёт..." oninput="save();toggleUrgentVis(${p.id},this.value)"></textarea><button class="urgent-close" onclick="clearUrgent(${p.id})" title="Убрать">✕</button></div>`;
     d.innerHTML=`<button class="del-btn" onclick="delProj(${p.id})">✕</button>
       <div class="proj-top">
         <div class="proj-emoji" onclick="ePick(this,${p.id})">${p.emoji}</div>
         <input class="proj-name" value="${esc(p.name)}" placeholder="НАЗВАНИЕ..." oninput="updP(${p.id},'name',this.value)">
         <div class="spill ${s.sc}" onclick="cycleSt(${p.id})">${s.lbl}</div>
       </div>
-      <div class="proj-rows">
+      <div class="proj-meta-row">
+        <div class="proj-stage ${st.cls}" onclick="stageNext(${p.id})">${st.lbl}</div>
+      </div>
+      ${callBadgeHTML(p)}
+      <div class="proj-rows" style="margin-bottom:6px">
         <div class="proj-row"><div class="rl">Сделали</div><textarea class="rv rv-done" rows="2" placeholder="Что выполнили..." oninput="save()">${esc(p.done)}</textarea></div>
         <div class="proj-row"><div class="rl">Не успели</div><textarea class="rv rv-missed" rows="1" placeholder="Что съехало..." oninput="save()">${esc(p.missed)}</textarea></div>
-        <div class="proj-row"><div class="rl">Клиент</div><textarea class="rv rv-client" rows="1" placeholder="Что ждёт..." oninput="save()">${esc(p.client)}</textarea></div>
+      </div>
+      <div class="proj-nextstep">
+        <div class="ns-icon">→</div>
+        <textarea class="ns-inp rv-nextstep" rows="1" placeholder="Следующий шаг: кто + что..." oninput="save()">${esc(p.nextStep)}</textarea>
+      </div>
+      <div class="proj-risk${hasRisk?'':' empty-risk'}">
+        <div class="ns-icon">${hasRisk?'⚠️':'⚑'}</div>
+        <textarea class="risk-inp rv-risk" rows="1" placeholder="Риск / блокер..." oninput="toggleRiskStyle(this);save()">${esc(p.risk)}</textarea>
+      </div>
+      ${urgentClientHTML}
+      <div class="proj-footer-row">
+        <div class="mood-row">
+          <span class="mood-label">Клиент</span>
+          ${moodBtns}
+        </div>
+        <button class="add-urgent-btn${hasClient?' hidden':''}" id="ucbtn-${p.id}" onclick="showUrgentClient(${p.id})" title="Добавить срочное">🔔 срочное</button>
       </div>`;
     g.appendChild(d);
   });
   const reds=S.projects.filter(p=>p.status==='red').length;
   const b=document.getElementById('redBadge');
   reds>0?(b.textContent=reds,b.style.display=''):(b.style.display='none');
+}
+function toggleRiskStyle(ta){ta.closest('.proj-risk').className='proj-risk'+(ta.value.trim()?'':' empty-risk');}
+function toggleUrgentVis(id,val){
+  const block=document.getElementById('uc-'+id);
+  const btn=document.getElementById('ucbtn-'+id);
+  if(val&&val.trim()){block.style.display='flex';if(btn)btn.classList.add('hidden');}
+  else{block.style.display='none';if(btn)btn.classList.remove('hidden');}
+}
+function showUrgentClient(id){
+  const block=document.getElementById('uc-'+id);
+  const btn=document.getElementById('ucbtn-'+id);
+  block.style.display='flex';
+  if(btn)btn.classList.add('hidden');
+  block.querySelector('textarea').focus();
+}
+function clearUrgent(id){
+  const p=S.projects.find(x=>x.id===id);if(p)p.client='';
+  const block=document.getElementById('uc-'+id);
+  if(block){block.querySelector('textarea').value='';block.style.display='none';}
+  const btn=document.getElementById('ucbtn-'+id);
+  if(btn)btn.classList.remove('hidden');
+  save();
 }
 
 function cycleSt(id){
@@ -559,13 +780,9 @@ function cycleSt(id){
   }
   updHealth();save();
 }
-function addProject(){S.projects.push({id:S.nextId++,emoji:EMOJIS[Math.floor(Math.random()*8)],name:'НОВЫЙ ПРОЕКТ',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:''});save();render();}
+function addProject(){S.projects.push({id:S.nextId++,emoji:EMOJIS[Math.floor(Math.random()*8)],name:'НОВЫЙ ПРОЕКТ',status:'green',done:'',missed:'',client:'',budget:0,hours:0,wDone:'',wRisk:'',stage:'active',nextCall:'',mood:'',nextStep:'',risk:''});save();render();}
 function delProj(id){S.projects=S.projects.filter(p=>p.id!==id);save();render();}
-function updP(id,f,v){
-  const p=S.projects.find(x=>x.id===id);if(!p)return;
-  p[f]=v;
-  save();
-}
+function updP(id,f,v){const p=S.projects.find(x=>x.id===id);if(p){p[f]=v;if(f==='name')updMeta();}save();}
 
 function rTeam(){
   const g=document.getElementById('teamGrid');g.innerHTML='';
@@ -607,16 +824,7 @@ function rLoadSum(){
 
 function addMember(){S.team.push({id:S.nextId++,name:'НОВЫЙ',role:'Роль',color:COLORS[S.team.length%COLORS.length],load:50,note:''});save();render();}
 function delMember(id){S.team=S.team.filter(m=>m.id!==id);save();render();}
-function updM(id,f,v){
-  const m=S.team.find(x=>x.id===id);if(!m)return;
-  m[f]=v;
-  if(f==='name'){
-    const av=document.querySelector(`.team-card[data-id="${id}"] .av`);
-    if(av)av.textContent=(v||'?')[0].toUpperCase();
-    rLoadSum();
-  }
-  save();
-}
+function updM(id,f,v){const m=S.team.find(x=>x.id===id);if(m){m[f]=v;if(f==='name')render();}save();}
 function updLoad(id,v){
   const m=S.team.find(x=>x.id===id);if(!m)return;m.load=+v;
   const lc=m.load>80?'var(--red)':m.load>60?'var(--yellow)':'var(--green2)';
@@ -854,6 +1062,52 @@ function updHealth(){
   if(avg>=75){el.style.color='var(--green)';em.textContent='🥕';}
   else if(avg>=40){el.style.color='var(--yellow)';em.textContent='⚠️';}
   else{el.style.color='white';em.textContent='🔥';}
+  updPulse();
+}
+function updPulse(){
+  const ps=S.projects;
+  // 1. traffic lights
+  const ng=ps.filter(p=>p.status==='green').length;
+  const ny=ps.filter(p=>p.status==='yellow').length;
+  const nr=ps.filter(p=>p.status==='red').length;
+  const total=ps.length||1;
+  document.getElementById('ntGreen').textContent=ng;
+  document.getElementById('ntYellow').textContent=ny;
+  document.getElementById('ntRed').textContent=nr;
+  document.getElementById('nbGreen').style.flex=ng;
+  document.getElementById('nbYellow').style.flex=ny;
+  document.getElementById('nbRed').style.flex=nr;
+
+  // 2. risks
+  const risks=ps.filter(p=>p.risk&&p.risk.trim()).length;
+  const rEl=document.getElementById('npRisks');
+  rEl.textContent=risks||'0';
+  rEl.className='np-big'+(risks>0?' has-risks':'');
+
+  // 3. moods
+  const mh=ps.filter(p=>p.mood==='happy').length;
+  const mn=ps.filter(p=>p.mood==='neutral').length;
+  const mt=ps.filter(p=>p.mood==='tense').length;
+  document.getElementById('nmHappy').textContent=mh;
+  document.getElementById('nmNeutral').textContent=mn;
+  document.getElementById('nmTense').textContent=mt;
+
+  // 4. next call
+  const withCalls=ps.filter(p=>p.nextCall).map(p=>{
+    const days=Math.round((new Date(p.nextCall)-new Date().setHours(0,0,0,0))/(1000*60*60*24));
+    return{name:p.name,emoji:p.emoji,days,nextCall:p.nextCall};
+  }).filter(p=>p.days>=0).sort((a,b)=>a.days-b.days);
+  const callEl=document.getElementById('npCall');
+  if(withCalls.length){
+    const c=withCalls[0];
+    const lbl=c.days===0?'СЕГОДНЯ':c.days===1?'ЗАВТРА':`ЧЕРЕЗ ${c.days}Д`;
+    callEl.textContent=`${c.emoji} ${c.name}
+${lbl}`;
+    callEl.className='np-call'+(c.days===0?' urgent':c.days<=2?' soon':'');
+  } else {
+    callEl.textContent='Нет звонков';
+    callEl.className='np-call';
+  }
 }
 function updMeta(){document.getElementById('navDate').textContent=new Date().toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'}).toUpperCase();}
 
